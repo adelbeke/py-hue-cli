@@ -10,6 +10,9 @@ Disclaimer: This project is for learning purposes but meant to be used.
 
 - [ ] Update brightness
 - [ ] Update color
+- [ ] Get status lights
+- [ ] Target light by name(s) (to be able to skip the interactive prompt)
+- [ ] Timer(?)
 
 ## Installation
 
