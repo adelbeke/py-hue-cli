@@ -3,13 +3,22 @@ from bridge import load_config, create_user, save_config
 from lights import list_lights, turn_on_off, pick_lights
 
 def main():
-    parser = argparse.ArgumentParser(description="Control your Philips Hue from the terminal")
+    parser = argparse.ArgumentParser(
+        description="Control your Philips Hue lights from the terminal.",
+        epilog=(
+            "Examples:\n"
+            "  py-hue list          Show all lights and their current state\n"
+            "  py-hue on            Interactively pick lights to turn on\n"
+            "  py-hue off           Interactively pick lights to turn off\n"
+        ),
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
 
-    subcommands = parser.add_subparsers(dest="command")
+    subcommands = parser.add_subparsers(dest="command", metavar="command")
 
-    subcommands.add_parser("list", help="List all lights")
-    subcommands.add_parser("on", help="Turn everything on")
-    subcommands.add_parser("off", help="Turn everything off")
+    subcommands.add_parser("list", help="List all lights and their state")
+    subcommands.add_parser("on", help="Pick and turn on lights that are currently off")
+    subcommands.add_parser("off", help="Pick and turn off lights that are currently on")
 
     # TODO: add a "brightness" subcommand with a --value argument
     # Hint: parser_bri = subcommands.add_parser("brightness")

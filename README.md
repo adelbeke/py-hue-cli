@@ -4,11 +4,21 @@ A CLI tool to control Philips Hue lights from the terminal.
 
 Disclaimer: This project is for learning purposes but meant to be used.
 
-## Setup
+## Installation
+
+### Local (development)
 
 ```bash
 make install
 source .venv/bin/activate
+```
+
+### Global (recommended)
+
+```bash
+brew install pipx
+pipx ensurepath
+pipx install -e .
 ```
 
 ## Configuration
