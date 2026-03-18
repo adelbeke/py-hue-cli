@@ -6,13 +6,14 @@ A CLI tool to control Philips Hue lights from the terminal.
 
 Disclaimer: This project is for learning purposes but meant to be used.
 
-## Roadmap
+## Usage
 
-- [ ] Update brightness
-- [ ] Update color
-- [ ] Get status lights
-- [ ] Target light by name(s) (to be able to skip the interactive prompt)
-- [ ] Timer(?)
+```bash
+py-hue --help
+py-hue list
+py-hue on
+py-hue off
+```
 
 ## Installation
 
@@ -35,8 +36,10 @@ pipx install -e .
 
 On first run, a `config.json` is generated with your Hue Bridge IP and API key. This file is gitignored — do not commit it.
 
-## Usage
+## Roadmap
 
-```bash
-py-hue --help
-```
+- [ ] Update brightness
+- [ ] Update color
+- [ ] Get status lights
+- [ ] Target light by name(s) (to be able to skip the interactive prompt)
+- [ ] Timer(?)
