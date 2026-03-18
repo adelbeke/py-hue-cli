@@ -7,9 +7,8 @@ Disclaimer: This project is for learning purposes but meant to be used.
 ## Setup
 
 ```bash
-python -m venv .venv
+make install
 source .venv/bin/activate
-pip install -r requirements.txt
 ```
 
 ## Configuration
@@ -19,5 +18,5 @@ On first run, a `config.json` is generated with your Hue Bridge IP and API key. 
 ## Usage
 
 ```bash
-python main.py --help
+py-hue --help
 ```
