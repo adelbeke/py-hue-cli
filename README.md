@@ -13,6 +13,7 @@ py-hue --help
 py-hue list
 py-hue on
 py-hue off
+py-hue brightness --value [0-100]
 ```
 
 ## Installation
@@ -38,7 +39,6 @@ On first run, a `config.json` is generated with your Hue Bridge IP and API key. 
 
 ## Roadmap
 
-- [ ] Update brightness
 - [ ] Update color
 - [ ] Get status lights
 - [ ] Target light by name(s) (to be able to skip the interactive prompt)
