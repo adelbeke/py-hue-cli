@@ -1,6 +1,13 @@
 import argparse
 from bridge import load_config, create_user, save_config
-from lights import list_lights, turn_on_off, pick_lights
+from lights import list_lights, turn_on_off, pick_lights, set_brightness
+
+
+def brightness_value(value):
+    v = int(value)
+    if not (0 <= v <= 100):
+        raise argparse.ArgumentTypeError("Brightness must be between 0 and 100.")
+    return v
 
 def main():
     parser = argparse.ArgumentParser(
@@ -20,9 +27,9 @@ def main():
     subcommands.add_parser("on", help="Pick and turn on lights that are currently off")
     subcommands.add_parser("off", help="Pick and turn off lights that are currently on")
 
-    # TODO: add a "brightness" subcommand with a --value argument
-    # Hint: parser_bri = subcommands.add_parser("brightness")
-    #       parser_bri.add_argument("--value", type=int, required=True)
+    parser_brightness = subcommands.add_parser("brightness", help="Pick a light and adjust the brightness of it.")
+    parser_brightness.add_argument("--value", type=brightness_value, required=True)
+
 
     args = parser.parse_args()
     config = load_config()
@@ -38,10 +45,14 @@ def main():
 
     if args.command == "list":
         list_lights(ip, username)
-    elif args.command == "on" or args.command == "off":
+    elif args.command in ("on", "off"):
         light_ids = pick_lights(ip, username, filter="off" if args.command == "on" else "on")
         for id in light_ids:
             turn_on_off(ip, username, id, turn_on=args.command == "on")
+    elif args.command == "brightness":
+        light_ids = pick_lights(ip, username)
+        for id in light_ids:
+            set_brightness(ip, username, id, args.value)
 
 if __name__ == "__main__":
     main()
